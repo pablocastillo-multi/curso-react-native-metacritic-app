@@ -1,24 +1,27 @@
-import { View, Image, Text, StyleSheet, Animated } from "react-native";
+import { View, Image, Text, StyleSheet, Animated, Pressable } from "react-native";
 import { useEffect, useRef } from "react";
+import { Link } from "expo-router";
 
 
 export function GameCard({ game }) {
   const scoreColor =
-    game.score >= 75 ? "#33e70b" : game.score >= 50 ? "#f7c600" : "#e74c3c";
+    game.score >= 96 ? "#33e70b" : game.score >= 95 ? "#f7c600" : "#e74c3c";
   return (
-    <View  style={styles.card}> 
-      <Image style={styles.image} source={{ uri: game.image }} />
+    <Link href={`/${game.slug}`} asChild>
+      <Pressable style={styles.card}>
+        <Image style={styles.image} source={{ uri: game.image }} />
 
-      <Text style={styles.name}>{game.name}</Text>
+        <Text style={styles.name}>{game.name}</Text>
 
-      <View style={styles.meta}>
-        <Text style={styles.releaseDate}>{game.releaseDate}</Text>
-        <Text style={[styles.score, { color: scoreColor }]}>⭐ {game.score}</Text>
-        <Text style={styles.rating}>{game.rating}</Text>
-        <Text style={styles.platforms}>{game.platforms}</Text>
-        <Text style={styles.genres}>{game.genres}</Text>
-      </View>
-    </View>
+        <View style={styles.meta}>
+          <Text style={styles.releaseDate}>{game.releaseDate}</Text>
+          <Text style={[styles.score, { color: scoreColor }]}>⭐ {game.score}</Text>
+          <Text style={styles.rating}>{game.rating}</Text>
+          <Text style={styles.platforms}>{game.platforms}</Text>
+          <Text style={styles.genres}>{game.genres}</Text>
+        </View>
+      </Pressable>
+    </Link>
   );
 }
 

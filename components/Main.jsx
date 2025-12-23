@@ -1,11 +1,20 @@
-import { StyleSheet, View, FlatList, ActivityIndicator, Pressable } from "react-native";
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 import { getLatestGames } from "../lib/metacritic";
 import { useEffect, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimationGameCard } from "./GameCard";
-import { Logo } from "./Logo";
-import {Link} from "expo-router";
-import { Home } from "../icons/Icons";
+import { Screen } from "./Screen";
+import { Stack } from "expo-router";
+import { Link } from "expo-router";
+import { AboutIcon } from "../icons/Icons"
+import { Pressable } from "react-native";
+import { Valorant } from "../icons/Logo";
+
 
 export function Main() {
   const [games, setGames] = useState([]);
@@ -23,13 +32,21 @@ export function Main() {
     );
   }
 
-  return (
-    <View style={{ flex: 1, paddingTop: insets.top }}>
-        <Link asChild href="/about">
-            <Pressable>
-                {({pressed}) =><Home style={{ opacity: pressed ? 0.5 : 1}}/>}
-            </Pressable>
-        </Link>
+  return ( 
+    <Screen>
+      <Stack.Screen
+        options={{
+          headerStyle: {backgroundColor: "#ff0000ff"},
+          headerTintColor: "black",
+          headerRight: () => (
+            <Link asChild href="/about">
+              <Pressable style={styles.about}>
+                {({pressed}) =><AboutIcon style={{ opacity: pressed ? 0.5 : 1}}/>}
+              </Pressable>
+            </Link>
+          )
+        }}
+      />
       <FlatList
         contentContainerStyle={styles.list}
         data={games}
@@ -37,11 +54,8 @@ export function Main() {
         renderItem={({ item, index }) => (
           <AnimationGameCard game={item} index={index} />
         )}
-        
-        ListHeaderComponent={<Logo/>}
-        ListHeaderComponentStyle={styles.header}
       />
-    </View>
+    </Screen>
   );
 }
 
@@ -49,10 +63,6 @@ const styles = StyleSheet.create({
   list: {
     paddingBottom: 40,
     alignItems: "center",
-  },
-  header: {
-    marginBottom: 24,
-    
   },
   loader: {
     flex: 1,
@@ -63,5 +73,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#fff",
-  }
+  },
 });
