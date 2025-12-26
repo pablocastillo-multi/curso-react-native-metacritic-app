@@ -8,10 +8,10 @@ export default function Layout() {
         <View style={{ flex: 1, backgroundColor: "#000000ff" }}>
             <Stack 
                 screenOptions={{
-                    headerStyle: {backgroundColor: "black"},
+                    headerStyle: {backgroundColor: "rgba(4, 45, 255, 1)" },
                     headerTintColor: "yellow",
                     headerTitle: "",
-                    headerLeft: () => <Logo/>,
+                    headerLeft: () => false,
                     headerRight: () => (
                         <Link asChild href="/about">
                             <Pressable>

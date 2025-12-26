@@ -5,7 +5,7 @@ import { Link } from "expo-router";
 
 export function GameCard({ game }) {
   const scoreColor =
-    game.score >= 96 ? "#33e70b" : game.score >= 95 ? "#f7c600" : "#e74c3c";
+    game.score >= 98 ? "#33e70b" : game.score >= 96 ? "#f7c600" : "#e74c3c";
   return (
     <Link href={`/${game.slug}`} asChild>
       <Pressable style={styles.card}>

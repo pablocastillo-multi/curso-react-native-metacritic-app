@@ -9,11 +9,6 @@ import { useEffect, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimationGameCard } from "./GameCard";
 import { Screen } from "./Screen";
-import { Stack } from "expo-router";
-import { Link } from "expo-router";
-import { AboutIcon } from "../icons/Icons"
-import { Pressable } from "react-native";
-import { Valorant } from "../icons/Logo";
 
 
 export function Main() {
@@ -34,19 +29,6 @@ export function Main() {
 
   return ( 
     <Screen>
-      <Stack.Screen
-        options={{
-          headerStyle: {backgroundColor: "#ff0000ff"},
-          headerTintColor: "black",
-          headerRight: () => (
-            <Link asChild href="/about">
-              <Pressable style={styles.about}>
-                {({pressed}) =><AboutIcon style={{ opacity: pressed ? 0.5 : 1}}/>}
-              </Pressable>
-            </Link>
-          )
-        }}
-      />
       <FlatList
         contentContainerStyle={styles.list}
         data={games}

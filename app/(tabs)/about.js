@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { Screen } from "../components/Screen";
+import { Screen } from "../../components/Screen";
 import { Stack } from "expo-router";
 import {
   AppleLogo,
@@ -10,20 +10,12 @@ import {
   Postman,
   Spotify,
   VsCode,
-} from "../icons/Logo";
+} from "../../icons/Logo";
 
 export default function About() {
   return (
     <Screen>
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: "#0edbe2ff" },
-          headerTintColor: "black",
-          headerLeft: () => {},
-          headerTitle: "Sobre el proyecto",
-          headerRight: () => {},
-        }}
-      />
+      
       <ScrollView>
 
         <Text style={styles.title}>Sobre el proyecto</Text>
