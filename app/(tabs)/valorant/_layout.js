@@ -55,10 +55,10 @@ export default function TabsValorant() {
           headerRight: () => <HeaderButtons />,
         }}
       />
-      <Stack.Screen name="bundles" options={{ title: "Paquetes" }} />
-      <Stack.Screen name="maps" options={{ title: "Mapas" }} />
-      <Stack.Screen name="cards" options={{ title: "Cards" }} />
-      <Stack.Screen name="weapons" options={{ title: "Armas" }} />
+      <Stack.Screen name="bundles" options={{ title: "" }} />
+      <Stack.Screen name="maps" options={{ title: "" }} />
+      <Stack.Screen name="cards" options={{ title: "" }} />
+      <Stack.Screen name="weapons" options={{ title: "" }} />
     </Stack>
   );
 }

@@ -1,7 +1,6 @@
 import {View, Text, FlatList, ActivityIndicator, StyleSheet, Image} from "react-native";
 import { Screen } from "../../../components/Screen";
 import { useEffect, useState } from "react";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getValorantBundles } from "../../../lib/valorant";
 
 
@@ -12,7 +11,6 @@ export default function Bundles() {
 
   useEffect(() => {
     getValorantBundles().then((data) => {
-      console.log("DATA FINAL:", data.length);
       setBundles(data);
       setLoading(false);
     });
@@ -31,6 +29,7 @@ export default function Bundles() {
 
   return (
     <Screen>
+      
       <View style={styles.container}>
         <Text style={styles.title}>BUNDLES</Text>
 
